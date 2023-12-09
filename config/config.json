@@ -1,0 +1,24 @@
+{
+  "development": {
+    "host": "127.0.0.1",
+	 "port": 5432,
+    "username": "postgres",
+    "password": "admin",
+    "database": "nest_db",
+    "dialect": "postgres"
+  },
+  "test": {
+	"host": "127.0.0.1",
+	"username": "postgres",
+	"password": "admin",
+	"database": "nest_db",
+	"dialect": "postgres"
+  },
+  "production": {
+    "host": "127.0.0.1",
+    "username": "postgres",
+    "password": "admin",
+    "database": "nest_db",
+    "dialect": "postgres"
+  }
+}
