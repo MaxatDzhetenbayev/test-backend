@@ -21,7 +21,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Получение всех пользователей' })
   @ApiResponse({
     status: 200,
-    description: 'Поулчен список пользователей',
+    description: 'Получен список пользователей',
     type: [UserDto],
   })
   @Get()
@@ -33,13 +33,13 @@ export class UsersController {
   @ApiResponse({ status: 201, description: 'Пользователь создан', type: User })
   @Post()
   create(@Body() userDto: createUserDto) {
-    return this.usersService.creteUser(userDto);
+    return this.usersService.createUser(userDto);
   }
 
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Удаление пользователя' })
   @ApiResponse({ status: 200, description: 'Пользователь удален' })
-  @Delete('/:id')
+  @Delete(':id')
   delete(@Param('id') userId: string) {
     return this.usersService.deleteUserById(userId);
   }

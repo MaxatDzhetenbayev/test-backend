@@ -15,7 +15,7 @@ export class UsersService {
     return await this.userRepository.findAll();
   }
 
-  async creteUser(userDto: createUserDto) {
+  async createUser(userDto: createUserDto) {
     const candidate = await this.userRepository.findOne({
       where: { login: userDto.login },
     });
@@ -23,7 +23,7 @@ export class UsersService {
     if (candidate)
       throw new HttpException(
         'Пользователь с таким логином уже существует',
-        HttpStatus.BAD_REQUEST,
+        HttpStatus.CONFLICT,
       );
 
     const user = await this.userRepository.create(userDto);
@@ -36,8 +36,8 @@ export class UsersService {
 
     if (!user)
       throw new HttpException(
-        'Пользователь не существует',
-        HttpStatus.BAD_REQUEST,
+        'Пользователь c таким id не существует',
+        HttpStatus.NOT_FOUND,
       );
 
     if (user.destroy()) {
